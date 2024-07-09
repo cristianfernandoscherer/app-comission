@@ -1,0 +1,28 @@
+version: "2"
+services:
+  web-app: 
+    image: webapp
+    build:
+      dockerfile: ./.docker/apache/Dockerfile
+    ports: 
+      - "8080:80"
+    volumes: 
+      - ./app:/var/www/html/app
+    networks:
+      - default
+  db:
+    image: postgres
+    restart: always
+    volumes: 
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "12345"
+    ports:
+      - 5432:5432
+    networks:
+      - default
+volumes:
+  pgdata:
+networks:
+  default:
+    driver: bridge

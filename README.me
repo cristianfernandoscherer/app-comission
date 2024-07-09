@@ -1,0 +1,19 @@
+psql -U postgres
+
+\l -> lista bancos existentes
+\c -> entra em um banco especifico
+
+
+CREATE TABLE congressperson (
+    id integer CONSTRAINT pk_id_congressperson PRIMARY KEY,
+    name varchar(50) NOT NULL,
+    email varchar(50) NOT NULL,
+    birthdate date NOT NULL,
+    phone varchar(15) NOT NULL,
+    cpf varchar(11) NOT NULL,
+    education varchar(50) NOT NULL,
+    photo varchar(50) NULL,
+    federatedUnit varchar(2) NOT NULL,
+    politicalParty varchar(50) NOT NULL,
+    deletedAt date NULL
+);
